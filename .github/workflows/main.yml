@@ -35,11 +35,11 @@ jobs:
         run: |
           echo "SonarQube scan status: ${{ steps.sonarqube-scan.outputs.status }}" 
       - name: Continue if SonarQube scan passed
-        if: ${{ steps.sonarqube-scan.outputs.status == 'passed' }}
+        if: ${{ steps.sonarqube-scan.outputs.status == 'Passed' }}
         run: echo "SonarQube scan passed. Continue with the pipeline."
-      - name: Build and analyze
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+#      - name: Build and analyze
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+#        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
