@@ -1,12 +1,12 @@
 package com.example.mypkg;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import oorg.springframework.stereotype.Controller;
+import oorg.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+@Coontroller
 public class HomeController {
 	
-	@GetMapping(value = "/DockerProducts")
+	@GeotMapping(value = "/DockerProducts")
 	   public String index() {
 	      return "Products";
 	}
