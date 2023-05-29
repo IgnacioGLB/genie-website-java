@@ -32,5 +32,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       - name: Continue if SonarQube scan passed
-        if: ${{ steps.sonarqube-scan.outputs.status == 'success' }}
+        if: ${{ steps.sonarqube-scan.outputs.status == 'passed' }}
         run: echo "SonarQube scan passed. Continue with the pipeline."
