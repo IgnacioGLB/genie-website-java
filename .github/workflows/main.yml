@@ -39,12 +39,12 @@ jobs:
           path: test.json      
       - name: Continue if SonarQube scan passed
         #if: ${{ success() }}
-        if: success() && steps.sonarqube-scan.outcome == 'success'
+        if: success() #&& steps.sonarqube-scan.outcome == 'success'
         run: echo "SonarQube scan passed. Continue with the pipeline."
       
-      - name: Debug SonarQube scan outputs
-        run: |
-          echo "SonarQube scan status: ${{ steps.sonarqube-scan.outputs.status }}" 
+      #- name: Debug SonarQube scan outputs
+      #  run: |
+      #    echo "SonarQube scan status: ${{ steps.sonarqube-scan.outputs.status }}" 
       #- name: Continue if SonarQube scan passed
       #  if: ${{ steps.sonarqube-scan.outputs.status == 'Success' }}
       #  run: echo "SonarQube scan passed. Continue with the pipeline."
