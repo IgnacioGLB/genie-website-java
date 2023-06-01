@@ -32,16 +32,17 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       - name: Upload test report in case of failure # reporte por si falla
-        if: failure() && steps.sonarqube-scan.outcome == 'failure'
+        #if: failure() && steps.sonarqube-scan.outcome == 'failure'
+        if: steps.sonarqube-scan.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
           path: test.json      
-      - name: Continue if SonarQube scan passed
+      - name: Continue if SonarQube scan passed #USAR EL "IF" DE ESTE PASO SOLO PARA QUE SE EJECUTE EL DEPLOY, NO PARA PRINTEAR
         #if: ${{ success() }}
         # if: success() && steps.sonarqube-scan.outcome == 'success'
-        # if: steps.sonarqube-scan.outcome == 'success' MAYBE THIS ONE WORKED
-        if: steps.sonarqube-scan.outcome == 'failure'
+        if: steps.sonarqube-scan.outcome == 'success' # THIS ONE WORKED
+        # if: steps.sonarqube-scan.outcome == 'failure'
         run: echo "SonarQube scan passed. Continue with the pipeline."
       
       #- name: Debug SonarQube scan outputs
