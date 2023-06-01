@@ -1,4 +1,4 @@
-name: Deployment Prod #lerolero
+name: Deployment Prod 
 on:
   push:
     branches:
